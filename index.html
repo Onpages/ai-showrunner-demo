@@ -6,351 +6,508 @@
 <title>Нейросети для вашего проекта — Николай</title>
 <meta name="description" content="Несуществующие бренды, вывески, сайты, блогеры, выпуски новостей — готовые под кадр. Для режиссёров, продакшнов, продюсеров.">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* === Apple Design System === */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --text: #0F172A;
-    --text-sub: #475569;
-    --text-muted: #94A3B8;
-    --bg: #FFFFFF;
-    --surface: #F8FAFC;
-    --border: #E2E8F0;
-    --accent: #1E40AF;
-    --accent-light: #DBEAFE;
+    /* Surface */
+    --canvas: #ffffff;
+    --canvas-parchment: #f5f5f7;
+    --surface-pearl: #fafafc;
+    --surface-tile-dark: #1d1d1f;
+
+    /* Text */
+    --ink: #1d1d1f;
+    --body: #1d1d1f;
+    --body-sub: #6e6e73;
+    --body-on-dark: #f5f5f7;
+    --body-on-dark-sub: #a1a1a6;
+
+    /* Brand */
+    --action-blue: #0066cc;
+    --action-blue-hover: #0077ed;
+    --action-blue-pressed: #006edb;
+    --focus-blue: #0071e3;
+    --sky-link-blue: #2997ff;
+
+    /* Spacing (8px base) */
+    --s-xxs: 4px;
+    --s-xs: 8px;
+    --s-sm: 12px;
+    --s-md: 17px;
+    --s-lg: 24px;
+    --s-xl: 32px;
+    --s-xxl: 48px;
+    --s-section: 80px;
+
+    /* Typography */
+    --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.6;
+    font-family: var(--font-text);
+    background: var(--canvas);
+    color: var(--body);
+    line-height: 1.47;
+    font-size: 17px;
+    font-weight: 400;
   }
 
   .container {
-    max-width: 1100px;
+    max-width: 980px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 22px;
   }
 
-  /* === HERO === */
+  /* === NAV (frosted, как Apple nav) === */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+  }
+  nav .brand {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  nav .nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  nav .nav-link {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.88;
+    transition: opacity 0.15s;
+  }
+  nav .nav-link:hover { opacity: 1; }
+
+  /* === HERO (Apple product tile — centered, airy) === */
   .hero {
-    background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
-    color: #FFFFFF;
-    padding: 80px 0 60px;
+    padding: var(--s-section) 0 var(--s-xxl);
     text-align: center;
+    background: var(--canvas);
+  }
+  .hero-eyebrow {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--action-blue);
+    margin-bottom: var(--s-sm);
+    letter-spacing: -0.022em;
   }
   .hero h1 {
-    font-size: 42px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    margin-bottom: 16px;
-    line-height: 1.15;
+    font-family: var(--font-display);
+    font-size: 80px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: var(--s-md);
   }
-  .hero .hero-sub {
-    font-size: 18px;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 24px;
+  .hero-sub {
+    font-size: 28px;
     font-weight: 400;
+    line-height: 1.14;
+    letter-spacing: 0.004em;
+    color: var(--body-sub);
+    max-width: 700px;
+    margin: 0 auto var(--s-lg);
   }
-  .hero .hero-cta {
-    display: inline-block;
-    background: #FBBF24;
-    color: #0F172A;
-    padding: 14px 32px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    transition: transform 0.15s;
-  }
-  .hero .hero-cta:hover {
-    transform: translateY(-2px);
-  }
-  .hero .hero-by {
-    margin-top: 32px;
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
-  }
-  .hero .hero-by a {
-    color: #FBBF24;
-    text-decoration: none;
+  .hero-actions {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--s-lg);
   }
 
-  /* === WHAT WE DO === */
-  .section {
-    padding: 64px 0;
+  /* === BUTTONS === */
+  .btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 980px;
+    font-size: 17px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    cursor: pointer;
+    letter-spacing: -0.022em;
   }
+  .btn:active { transform: scale(0.95); }
+
+  .btn-primary {
+    background: var(--action-blue);
+    color: var(--canvas);
+  }
+  .btn-primary:hover { background: var(--action-blue-hover); }
+
+  .btn-link {
+    color: var(--action-blue);
+    background: transparent;
+    padding: 12px 6px;
+  }
+  .btn-link:hover { text-decoration: underline; }
+  .btn-link::after {
+    content: " ›";
+    font-size: 1.1em;
+    margin-left: 2px;
+  }
+
+  /* === SECTION BASE === */
+  section.tile {
+    padding: var(--s-section) 0;
+    border-top: 1px solid var(--canvas-parchment);
+  }
+  section.tile.dark {
+    background: var(--surface-tile-dark);
+    color: var(--body-on-dark);
+    border-top: none;
+  }
+  section.tile.parchment {
+    background: var(--canvas-parchment);
+  }
+
   .section-head {
     text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: var(--s-xxl);
   }
-  .section-head h2 {
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
+  .section-eyebrow {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--action-blue);
+    margin-bottom: var(--s-xs);
+    letter-spacing: -0.022em;
   }
-  .section-head .section-sub {
-    font-size: 16px;
-    color: var(--text-sub);
-    max-width: 600px;
+  section.tile.dark .section-eyebrow { color: var(--sky-link-blue); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    color: var(--ink);
+    margin-bottom: var(--s-md);
+  }
+  section.tile.dark .section-title { color: var(--body-on-dark); }
+  .section-sub {
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.38;
+    color: var(--body-sub);
+    max-width: 700px;
     margin: 0 auto;
+    letter-spacing: 0.011em;
   }
+  section.tile.dark .section-sub { color: var(--body-on-dark-sub); }
 
+  /* === CARDS GRID (Apple accessories grid) === */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: var(--s-xl);
   }
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 24px;
-    transition: transform 0.15s, box-shadow 0.15s;
+    background: var(--canvas);
+    border-radius: 18px;
+    padding: var(--s-lg);
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  section.tile.parchment .card {
+    background: var(--canvas);
   }
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
   }
-  .card-icon {
-    font-size: 28px;
-    margin-bottom: 16px;
+  .card-emoji {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: var(--s-md);
   }
   .card h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 8px;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin-bottom: var(--s-xs);
   }
   .card p {
-    font-size: 14px;
-    color: var(--text-sub);
-    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.42;
+    color: var(--body-sub);
+    letter-spacing: 0.016em;
   }
 
-  /* === DEMO === */
-  .demo-section {
-    background: var(--surface);
-    padding: 64px 0;
-  }
+  /* === DEMO CARD (full-width highlight) === */
   .demo-card {
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 40px;
-    text-align: center;
     max-width: 700px;
     margin: 0 auto;
+    text-align: center;
+    padding: var(--s-xxl) var(--s-lg);
   }
-  .demo-card .demo-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-muted);
-    letter-spacing: 2px;
+  .demo-eyebrow {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--action-blue);
+    margin-bottom: var(--s-xs);
+    letter-spacing: 0.016em;
     text-transform: uppercase;
-    margin-bottom: 16px;
   }
   .demo-card h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 12px;
-  }
-  .demo-card p {
-    font-size: 15px;
-    color: var(--text-sub);
-    margin-bottom: 24px;
-    line-height: 1.6;
-  }
-  .demo-card .demo-link {
-    display: inline-block;
-    background: var(--accent);
-    color: #FFFFFF;
-    padding: 14px 28px;
-    border-radius: 8px;
+    font-family: var(--font-display);
+    font-size: 40px;
     font-weight: 600;
-    font-size: 15px;
-    text-decoration: none;
-    transition: background 0.15s;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin-bottom: var(--s-sm);
+    line-height: 1.1;
   }
-  .demo-card .demo-link:hover {
-    background: #1E3A8A;
+  section.tile.dark .demo-card h3 { color: var(--body-on-dark); }
+  .demo-card p {
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.42;
+    color: var(--body-sub);
+    margin-bottom: var(--s-lg);
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
   }
+  section.tile.dark .demo-card p { color: var(--body-on-dark-sub); }
 
   /* === CONTACT === */
-  .contact {
-    padding: 64px 0;
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: var(--s-xl);
+  }
+  .contact-tile {
+    background: var(--canvas);
+    border-radius: 18px;
+    padding: var(--s-lg);
     text-align: center;
-  }
-  .contact h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 12px;
-  }
-  .contact p {
-    font-size: 15px;
-    color: var(--text-sub);
-    margin-bottom: 32px;
-  }
-  .contact-links {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .contact-link {
-    display: inline-block;
-    padding: 12px 24px;
-    border-radius: 8px;
-    border: 1.5px solid var(--border);
-    color: var(--text);
     text-decoration: none;
-    font-weight: 500;
+    color: var(--ink);
+    transition: transform 0.2s ease;
+  }
+  .contact-tile:hover { transform: translateY(-2px); }
+  .contact-tile .ct-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--action-blue);
+    margin-bottom: var(--s-xs);
+    letter-spacing: 0.016em;
+    text-transform: uppercase;
+  }
+  .contact-tile .ct-value {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.022em;
+    line-height: 1.2;
+  }
+  .contact-tile .ct-sub {
     font-size: 14px;
-    transition: border-color 0.15s, background 0.15s;
-  }
-  .contact-link:hover {
-    border-color: var(--accent);
-    background: var(--accent-light);
-  }
-  .contact-link.primary {
-    background: var(--accent);
-    color: #FFFFFF;
-    border-color: var(--accent);
-  }
-  .contact-link.primary:hover {
-    background: #1E3A8A;
+    color: var(--body-sub);
+    margin-top: var(--s-xxs);
   }
 
   /* === FOOTER === */
   footer {
-    background: var(--text);
-    color: rgba(255,255,255,0.7);
-    padding: 32px 0;
-    text-align: center;
-    font-size: 13px;
+    background: var(--canvas-parchment);
+    padding: var(--s-xl) 0;
+    font-size: 12px;
+    color: var(--body-sub);
+    line-height: 1.5;
+    letter-spacing: 0.016em;
   }
-  footer a {
-    color: #FBBF24;
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--s-md);
+  }
+  footer .footer-left a {
+    color: var(--action-blue);
     text-decoration: none;
   }
+  footer .footer-left a:hover { text-decoration: underline; }
   footer .ai-note {
-    margin-top: 8px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.4);
     font-style: italic;
+    color: var(--body-sub);
+    opacity: 0.85;
   }
 
   /* === MOBILE === */
-  @media (max-width: 640px) {
-    .hero h1 { font-size: 30px; }
-    .hero .hero-sub { font-size: 15px; }
-    .section-head h2 { font-size: 24px; }
-    .demo-card { padding: 24px; }
-    .demo-card h3 { font-size: 20px; }
+  @media (max-width: 833px) {
+    .hero h1 { font-size: 48px; }
+    .hero-sub { font-size: 21px; }
+    .section-title { font-size: 36px; }
+    .section-sub { font-size: 17px; }
+    .grid { grid-template-columns: 1fr; gap: 12px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 12px; }
+    .demo-card h3 { font-size: 28px; }
+    .demo-card p { font-size: 17px; }
+    nav .nav-links { gap: 12px; }
+    nav .nav-link { font-size: 11px; }
   }
 </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <h1>Нейросети для вашего проекта</h1>
-      <p class="hero-sub">Несуществующие бренды, вывески, сайты, блогеры — готовые под кадр.<br>Для режиссёров, продакшнов, продюсеров.</p>
-      <a href="#contacts" class="hero-cta">Связаться</a>
-      <p class="hero-by">
-        Николай · сценарист ·
-        <a href="https://www.kinopoisk.ru/name/10137792/" target="_blank" rel="noopener">Кинопоиск</a>
-      </p>
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#top" class="brand">Николай</a>
+    <div class="nav-links">
+      <a href="#what" class="nav-link">Что умею</a>
+      <a href="#demo" class="nav-link">Демо</a>
+      <a href="#contacts" class="nav-link">Контакты</a>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <!-- WHAT WE DO -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Что умеем</h2>
-        <p class="section-sub">Если вам в кадр нужны несуществующие — сделаю. Быстро, под печать или под съёмку.</p>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container">
+    <p class="hero-eyebrow">Нейросети для вашего проекта</p>
+    <h1>Несуществующее —<br>готовое под кадр.</h1>
+    <p class="hero-sub">Бренды, вывески, сайты, блогеры, выпуски новостей. Для режиссёров, продакшнов, продюсеров.</p>
+    <div class="hero-actions">
+      <a href="#contacts" class="btn btn-primary">Связаться</a>
+      <a href="#demo" class="btn btn-link">Посмотреть демо</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="tile parchment" id="what">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">Что умею</p>
+      <h2 class="section-title">Если в кадре нужно то,<br>чего не существует.</h2>
+      <p class="section-sub">Делаю быстро. Под печать или под съёмку. Готовые файлы, без «доработать потом».</p>
+    </div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-emoji">📦</div>
+        <h3>Бренды и товары</h3>
+        <p>Упаковки, этикетки, меню, визитки, буклеты — готовые под печать.</p>
       </div>
-      <div class="grid">
 
-        <div class="card">
-          <div class="card-icon">📦</div>
-          <h3>Бренды и товары</h3>
-          <p>Упаковки, этикетки, меню, визитки, буклеты — готовые под печать.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🪧</div>
-          <h3>Вывески и плакаты</h3>
-          <p>Разных стилей и тематики — от уличной рекламы до интерьерной.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">📐</div>
-          <h3>Научные планы</h3>
-          <p>Осмысленные схемы, графики, расчёты, чертежи — для лабораторий, больниц, офисов в кадре.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">💻</div>
-          <h3>Работающие сайты</h3>
-          <p>Копия «Инстаграма» с фото и видео несуществующих пользователей, приложения, интерфейсы.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🎥</div>
-          <h3>Блогеры и артисты</h3>
-          <p>На несуществующих каналах, с несуществующими песнями — для экранов в кадре.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">📺</div>
-          <h3>Выпуски новостей</h3>
-          <p>На несуществующих каналах с несуществующими дикторами — для телевизоров в кадре.</p>
-        </div>
-
+      <div class="card">
+        <div class="card-emoji">🪧</div>
+        <h3>Вывески и плакаты</h3>
+        <p>Разных стилей и тематики — от уличной рекламы до интерьерной.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- LIVE DEMO -->
-  <section class="demo-section">
-    <div class="container">
-      <div class="demo-card">
-        <div class="demo-label">Live demo</div>
-        <h3>Рабочий интернет-магазин с несуществующими товарами</h3>
-        <p>Это не макет. Это работающий магазин: каталог, корзина, карточки товаров — всё сделано нейросетями под наш продакшн. Заходите, посмотрите.</p>
-        <a href="https://onpages.github.io/blanmon/" target="_blank" rel="noopener" class="demo-link">Открыть blanmon →</a>
+      <div class="card">
+        <div class="card-emoji">📐</div>
+        <h3>Научные планы</h3>
+        <p>Осмысленные схемы, графики, расчёты, чертежи — для лабораторий, больниц, офисов в кадре.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- CONTACTS -->
-  <section class="contact" id="contacts">
-    <div class="container">
-      <h2>Обращайтесь</h2>
-      <p>Делаю быстро. Пишите — обсудим ваш проект.</p>
-      <div class="contact-links">
-        <a href="mailto:onpages.tm@gmail.com" class="contact-link primary">onpages.tm@gmail.com</a>
-        <a href="https://www.kinopoisk.ru/name/10137792/" target="_blank" rel="noopener" class="contact-link">Кинопоиск</a>
-        <a href="https://onpages.github.io/blanmon/" target="_blank" rel="noopener" class="contact-link">blanmon (demo)</a>
+      <div class="card">
+        <div class="card-emoji">💻</div>
+        <h3>Работающие сайты</h3>
+        <p>Копия «Инстаграма» с фото и видео несуществующих пользователей, приложения, интерфейсы.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <p>Николай · <a href="mailto:onpages.tm@gmail.com">onpages.tm@gmail.com</a> · Москва</p>
-      <p class="ai-note">Сайт и продукт сделаны с помощью AI-агентов.</p>
+      <div class="card">
+        <div class="card-emoji">🎥</div>
+        <h3>Блогеры и артисты</h3>
+        <p>На несуществующих каналах, с несуществующими песнями — для экранов в кадре.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-emoji">📺</div>
+        <h3>Выпуски новостей</h3>
+        <p>На несуществующих каналах с несуществующими дикторами — для телевизоров в кадре.</p>
+      </div>
+
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- LIVE DEMO -->
+<section class="tile dark" id="demo">
+  <div class="container">
+    <div class="demo-card">
+      <p class="demo-eyebrow">Live demo</p>
+      <h3>Рабочий магазин<br>с несуществующими товарами.</h3>
+      <p>Это не макет. Это работающий магазин: каталог, корзина, карточки товаров — всё сделано нейросетями под наш продакшн.</p>
+      <a href="https://onpages.github.io/blanmon/" target="_blank" rel="noopener" class="btn btn-primary">Открыть Blanmon</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="tile" id="contacts">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">Контакты</p>
+      <h2 class="section-title">Обращайтесь.</h2>
+      <p class="section-sub">Делаю быстро. Пишите — обсудим ваш проект.</p>
+    </div>
+    <div class="contact-grid">
+
+      <a href="mailto:onpages.tm@gmail.com" class="contact-tile">
+        <p class="ct-label">Почта</p>
+        <p class="ct-value">onpages.tm@gmail.com</p>
+        <p class="ct-sub">Отвечаю в течение дня</p>
+      </a>
+
+      <a href="https://www.kinopoisk.ru/name/10137792/" target="_blank" rel="noopener" class="contact-tile">
+        <p class="ct-label">Кинопоиск</p>
+        <p class="ct-value">Николай</p>
+        <p class="ct-sub">Сценарист</p>
+      </a>
+
+      <a href="https://onpages.github.io/blanmon/" target="_blank" rel="noopener" class="contact-tile">
+        <p class="ct-label">Демо</p>
+        <p class="ct-value">Blanmon</p>
+        <p class="ct-sub">Рабочий магазин</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-left">
+      Николай · <a href="mailto:onpages.tm@gmail.com">onpages.tm@gmail.com</a> · Москва
+    </div>
+    <div class="ai-note">
+      Сайт и продукт сделаны с помощью AI-агентов.
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
